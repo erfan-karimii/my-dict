@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Dictionary(models.Model):
-    Choices_Level = {
-        'easy':'easy',
-        'medium':'medium',
-        'hard':'hard',
-    }
+    Choices_Level = (
+       ('easy','easy'),
+        ('medium','medium'),
+        ('hard','hard'),
+    )
     author = models.ForeignKey(User,on_delete=models.PROTECT)
     word = models.CharField(max_length=250)
     mean = models.CharField(max_length=250)

@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y+n@&gn3+&esh2zfp1(f7uczk8j)0yvdsj*zuu_(3zys%04bkh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['185.252.31.34']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'test_app',
-     'rest_framework',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -125,10 +126,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-if DEBUG:
-    STATICFILES_DIRS = [BASE_DIR / "static",]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR,'static_root/')
+STATICFILES_DIRS = [BASE_DIR / "static",]
+
+STATIC_ROOT = os.path.join(BASE_DIR,'static_root/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
